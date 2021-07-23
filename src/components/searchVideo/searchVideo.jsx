@@ -20,25 +20,11 @@ class SearchVideo extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let filteredResults = this.props.videos.filter(
-      (songs) =>
-        songs.title
-          .toLowerCase()
-          .includes(this.state.searchTerm.toLowerCase()) ||
-        songs.artist
-          .toLowerCase()
-          .includes(this.state.searchTerm.toLowerCase()) ||
-        songs.album
-          .toLowerCase()
-          .includes(this.state.searchTerm.toLowerCase()) ||
-        songs.release_date
-          .toLowerCase()
-          .includes(this.state.searchTerm.toLowerCase()) ||
-        songs.genre.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-    );
-    this.props.filterVideos(filteredResults);
-  };
-
+    const videoSearch = {         
+        searchtTerm: event.target.value
+        }
+    }
+ 
   render() {
     return (
       <div className="search-bar-center">

@@ -1,32 +1,37 @@
 import React, { Component } from 'react';
 import SearchVideo from './components/searchVideo/searchVideo';
+import axios from 'axios';
+import MainVideo from './components/mainVideo/mainVideo';
 
 
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = {
+            searchTerm: ""
+          }
     }
+    
     async youTubeVideos(e) {
-        let searchVideos = await axios.get("https://www.googleapis.com/youtube/v3/search?q={SEARCH QUERY HERE}&part=snippet&key=AIzaSyB3F_ppVkCcneSQJ6JiuctLOK503A4cOCE")
+        let searchVideos = await axios.get(`https://www.googleapis.com/youtube/v3/search?q={this.state.searchTerm}&part=snippet&key=AIzaSyB3F_ppVkCcneSQJ6JiuctLOK503A4cOCE`)
         .then(response => this.setState({
-            songs: response.data
-        }));  
-        
+            videos: response.data            
+        })     
+        );  
+        console.log(this)
     }
 
-    filterVideos=(arrayOfNewVideos)=>{
-        this.setState({
-            songs: arrayOfNewVideos
-        })
-    }
+    componentDidMount(){
+        this.youTubeVideos()
+    } 
 
     render() { 
         return ( 
             <React.Fragment>
                 <h1>Test</h1>
-                <SearchVideo videos={this.state.videos} filterVideos = {this.filterVideos} />
+                <SearchVideo videos={this.state.videos} />
+                {/* <MainVideo />    */}
             </React.Fragment>
          );
     }
