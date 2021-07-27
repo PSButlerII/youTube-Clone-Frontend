@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import SearchVideo from './components/searchVideo/searchVideo';
 import axios from 'axios';
 import MainVideo from './components/mainVideo/mainVideo';
-import RelatedVideos from './components/relatedVideo/relatedVideo';
 import CommentForm from './components/commentForm/commentForm';
+import CommentTable from './components/commentTable/commentTable';
 
 class App extends Component {
    
@@ -233,8 +233,20 @@ class App extends Component {
         });
         console.log(this.state.videos)
         console.log(this.state.selectedVideoId)
-        }           
+        }
+        
+        async getAllComments(e) {
+            await axios.get("http://127.0.0.1:8000/comment/")
+            .then(response => this.setState({
+                comments: response.data
+            }));
+            console.log(this.state.comments)  
+        }
 
+        componentDidMount() {
+            this.getAllComments();
+        }
+    
         addComment = (comment) => {
             console.log (comment)
             console.log(this.state.comments)
@@ -264,6 +276,7 @@ render() {
             <MainVideo youTubeVideo={this.state.selectedVideoId} />
             <p>{this.state.selectedVideoDescription}</p> <hr /><br></br>
             <CommentForm video_id={this.state.selectedVideoId} addComment={this.addComment}/>
+            <CommentTable comments={this.state.comments} video_id={this.state.selectedVideoId} addLike={this.addLike} addDislike={this.addDislike} />
 
             <h1>RELATED VIDEOS</h1>
             <h2>{this.state.selectedVideoTitleOne}</h2>

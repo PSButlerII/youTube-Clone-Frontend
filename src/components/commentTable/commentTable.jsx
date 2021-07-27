@@ -1,34 +1,31 @@
-const CommentTable = () => {
+const CommentTable = (props) => {
   return (
-    <div>
-      <table class="table table-striped">
+    <div className="text-center">  
+      <table className="table table-striped">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Comment</th>
+            <th scope="col">Likes</th>
+            <th scope="col">Dislikes</th>
+            
           </tr>
         </thead>
+        
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {props.comments.map((comment) => (
+            <tr key={comment.id}>
+              <td>{comment.new_comment}</td>             
+              <td>{comment.likes}
+              <button type="button" class="btn btn-outline-secondary" onClick={() => props.addLike(comment.video_id)}>Like</button>
+              </td>
+              <td>{comment.dislikes}
+              <button type="button" class="btn btn-outline-secondary" onClick={() => props.addDislike(comment.video_id)}>Dislike</button>
+              </td>
+              {/* <button type="button" class="btn btn-outline-secondary" onClick={() => props.addReply(song.id)}>Delete</button> */}
+              
+
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
