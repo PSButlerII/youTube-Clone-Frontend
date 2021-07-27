@@ -16,10 +16,10 @@ const CommentTable = (props) => {
             <tr key={comment.id}>
               <td>{comment.new_comment}</td>             
               <td>{comment.likes}
-              <button type="button" class="btn btn-outline-secondary" onClick={() => props.addLike(comment.video_id)}>Like</button>
+              <button type="button" className="btn btn-outline-secondary" onClick={() => props.addLike(comment.id)}>Like</button>
               </td>
               <td>{comment.dislikes}
-              <button type="button" class="btn btn-outline-secondary" onClick={() => props.addDislike(comment.video_id)}>Dislike</button>
+              <button type="button" className="btn btn-outline-secondary" onClick={() => props.addDislike(comment.id)}>Dislike</button>
               </td>
               {/* <button type="button" class="btn btn-outline-secondary" onClick={() => props.addReply(song.id)}>Delete</button> */}
               

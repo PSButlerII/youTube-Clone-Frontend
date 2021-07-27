@@ -238,7 +238,8 @@ class App extends Component {
         async getAllComments(e) {
             await axios.get("http://127.0.0.1:8000/comment/")
             .then(response => this.setState({
-                comments: response.data
+                comments: response.data,
+                id: this.state.comments.id
             }));
             console.log(this.state.comments)  
         }
@@ -258,11 +259,13 @@ class App extends Component {
         }
 
         addLike = (id) => {
-                axios.patch(`http://127.0.0.1:8000/comment/${id}/`)                 
+                axios.patch(`http://127.0.0.1:8000/comment/${id}/`)
+                this.getAllComments();                 
         }
         
         addDislike = (id) => {
             axios.put(`http://127.0.0.1:8000/comment/${id}/`)
+            this.getAllComments();               
         }
 
         
