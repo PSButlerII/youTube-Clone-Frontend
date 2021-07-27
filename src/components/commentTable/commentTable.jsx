@@ -11,7 +11,7 @@ const CommentTable = (props) => {
           </tr>
         </thead>
         
-        <tbody>
+        <tbody>        
           {props.comments.map((comment) => (
             <tr key={comment.id}>
               <td>{comment.new_comment}</td>             
