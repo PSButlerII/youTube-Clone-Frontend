@@ -4,6 +4,8 @@ import axios from 'axios';
 import MainVideo from './components/mainVideo/mainVideo';
 import RelatedVideos from './components/relatedVideo/relatedVideo';
 import Videos from './components/relatedVideo/relatedVideo';
+import CommentForm from "./components/commentForm/commentForm";
+import CommentTable from "./components/commentTable/commentTable";
 
 class App extends Component {
    
@@ -241,30 +243,31 @@ class App extends Component {
 
 
 render() {
-    return(
-        <React.Fragment>
-            <SearchVideo videoResults={this.youTubeVideo} />
-            <h1>MAIN VIDEO</h1>
-            <h2>{this.state.selectedVideoTitle}</h2>
-            <MainVideo youTubeVideo={this.state.selectedVideoId} />
-            <p>{this.state.selectedVideoDescription}</p> <br></br>
-            <h1>RELATED VIDEOS</h1>
-            <h2>{this.state.selectedVideoTitleOne}</h2>
-            <MainVideo youTubeVideo={this.state.selectedVideoIdOne} />
-            <p>{this.state.selectedVideoDescriptionOne}</p>
-            <h2>{this.state.selectedVideoTitleTwo}</h2>
-            <MainVideo youTubeVideo={this.state.selectedVideoIdTwo} />
-            <p>{this.state.selectedVideoDescriptionTwo}</p>  
-            <h2>{this.state.selectedVideoTitleThree}</h2>
-            <MainVideo youTubeVideo={this.state.selectedVideoIdThree} />
-            <p>{this.state.selectedVideoDescriptionThree}</p>
-            <h2>{this.state.selectedVideoTitleFour}</h2>
-            <MainVideo youTubeVideo={this.state.selectedVideoIdFour} />
-            <p>{this.state.selectedVideoDescriptionFour}</p>  
-
-            {/* <Videos videos={this.state.videos} /> */}
-            </React.Fragment>
-    )
+    return (
+      <React.Fragment>
+        <SearchVideo videoResults={this.youTubeVideo} />
+        <h1>MAIN VIDEO</h1>
+        <h2>{this.state.selectedVideoTitle}</h2>
+        <MainVideo youTubeVideo={this.state.selectedVideoId} />
+        <p>{this.state.selectedVideoDescription}</p> <br></br>
+        <CommentForm />
+        <CommentTable />
+        <h1>RELATED VIDEOS</h1>
+        <h2>{this.state.selectedVideoTitleOne}</h2>
+        <MainVideo youTubeVideo={this.state.selectedVideoIdOne} />
+        <p>{this.state.selectedVideoDescriptionOne}</p>
+        <h2>{this.state.selectedVideoTitleTwo}</h2>
+        <MainVideo youTubeVideo={this.state.selectedVideoIdTwo} />
+        <p>{this.state.selectedVideoDescriptionTwo}</p>
+        <h2>{this.state.selectedVideoTitleThree}</h2>
+        <MainVideo youTubeVideo={this.state.selectedVideoIdThree} />
+        <p>{this.state.selectedVideoDescriptionThree}</p>
+        <h2>{this.state.selectedVideoTitleFour}</h2>
+        <MainVideo youTubeVideo={this.state.selectedVideoIdFour} />
+        <p>{this.state.selectedVideoDescriptionFour}</p>
+        {/* <Videos videos={this.state.videos} /> */}
+      </React.Fragment>
+    );
   }
 }
 export default App;
