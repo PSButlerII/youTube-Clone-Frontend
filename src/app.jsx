@@ -4,6 +4,7 @@ import axios from "axios";
 import MainVideo from "./components/mainVideo/mainVideo";
 import CommentForm from "./components/commentForm/commentForm";
 import CommentTable from "./components/commentTable/commentTable";
+import "./App.css";
 
 class App extends Component {
   constructor(props) {
