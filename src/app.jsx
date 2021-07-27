@@ -3,13 +3,14 @@ import SearchVideo from './components/searchVideo/searchVideo';
 import axios from 'axios';
 import MainVideo from './components/mainVideo/mainVideo';
 import RelatedVideos from './components/relatedVideo/relatedVideo';
-import Videos from './components/relatedVideo/relatedVideo';
+import CommentForm from './components/commentForm/commentForm';
 
 class App extends Component {
    
     constructor(props) {
         super(props);
         this.state = {
+            comments: [],
             response: {
                 "data": {
                     "kind": "youtube#searchListResponse",
@@ -198,7 +199,7 @@ class App extends Component {
     }
 
     youTubeVideo = async (searchTerm) => {     
-        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&part=snippet&key=AIzaSyB3F_ppVkCcneSQJ6JiuctLOK503A4cOCE`)
+        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&part=snippet&key=AIzaSyDMsnff0u4A96PStCHpTFtEkPLS_VD9W5A`)
         console.log(response)
         this.setState({
             selectedVideoId: response.data.items[0].id.videoId,
@@ -224,45 +225,63 @@ class App extends Component {
             selectedVideoIdFour: response.data.items[4].id.videoId,
             selectedVideoTitleFour:response.data.items[4].snippet.title,
             selectedVideoDescriptionFour:response.data.items[4].snippet.description,
-            selectedVideoThumbnailFour:response.data.items[4].snippet.thumbnails.high.url,
-            
-            // videoId:response.data.items.id.videoId,
-            // videoTitle:response.data.items.snippet.title,
-            // videoDescription:response.data.items.snippet.description,
-            // videoThumbnail:response.data.items.snippet.thumbnails.high.url,
+            selectedVideoThumbnailFour:response.data.items[4].snippet.thumbnails.high.url,        
+          
         })
-
         this.setState({
             videos: response.data,    
         });
         console.log(this.state.videos)
         console.log(this.state.selectedVideoId)
-        }    
+        }           
 
+        addComment = (comment) => {
+            console.log (comment)
+            console.log(this.state.comments)
+            axios.post(`http://127.0.0.1:8000/comment/`, comment)
+            this.setState 
+                ({
+                comments: [...this.state.comments, comment],          
+            });        
+        }
+
+        addLike = (id) => {
+                axios.patch(`http://127.0.0.1:8000/comment/${id}/`)                 
+        }
+        
+        addDislike = (id) => {
+            axios.put(`http://127.0.0.1:8000/comment/${id}/`)
+        }
+
+        
 
 render() {
     return(
-        <React.Fragment>
+        <React.Fragment className="center">
             <SearchVideo videoResults={this.youTubeVideo} />
             <h1>MAIN VIDEO</h1>
             <h2>{this.state.selectedVideoTitle}</h2>
             <MainVideo youTubeVideo={this.state.selectedVideoId} />
-            <p>{this.state.selectedVideoDescription}</p> <br></br>
+            <p>{this.state.selectedVideoDescription}</p> <hr /><br></br>
+            <CommentForm video_id={this.state.selectedVideoId} addComment={this.addComment}/>
+
             <h1>RELATED VIDEOS</h1>
             <h2>{this.state.selectedVideoTitleOne}</h2>
             <MainVideo youTubeVideo={this.state.selectedVideoIdOne} />
             <p>{this.state.selectedVideoDescriptionOne}</p>
+            
             <h2>{this.state.selectedVideoTitleTwo}</h2>
             <MainVideo youTubeVideo={this.state.selectedVideoIdTwo} />
             <p>{this.state.selectedVideoDescriptionTwo}</p>  
+            
             <h2>{this.state.selectedVideoTitleThree}</h2>
-            <MainVideo youTubeVideo={this.state.selectedVideoIdThree} />
+            <MainVideo youTubeVideo={this.state.selectedVideoIdThree} />            
             <p>{this.state.selectedVideoDescriptionThree}</p>
+
             <h2>{this.state.selectedVideoTitleFour}</h2>
             <MainVideo youTubeVideo={this.state.selectedVideoIdFour} />
             <p>{this.state.selectedVideoDescriptionFour}</p>  
-
-            {/* <Videos videos={this.state.videos} /> */}
+            {/* <RelatedVideos relatedYouTubeVideo={this.selectedVideoId} />  */}
             </React.Fragment>
     )
   }
