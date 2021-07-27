@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 
 
-class RelatedVideos extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {  }
-    }
-    render() { 
+ const Videos = (props) => {
         return ( 
-            <div class="text-center">  
+            <div className="text-center">  
             <table className="table table-striped">
               <thead>
                 <tr>                 
@@ -19,20 +14,19 @@ class RelatedVideos extends Component {
               </thead>
               
               <tbody>
-                {this.props.videos.map((arrayOfVideos) => (
-                  <tr key={this.props.ArrayVideoId}>                    
-                    <td>{this.props.ArrayVideoTitle}</td>
-                    <td>{this.props.ArrayVideoThumbnail}</td>
-                    <td>{this.props.ArrayVideoDescription}</td>
+                  <tr>                    
+                    <td>{props.ArrayVideoTitleOne}</td>
+                    <td>{props.ArrayVideoThumbnailOne}</td>
+                    <td>{props.ArrayVideoDescriptionOne}</td>
                     
       
                   </tr>
-                ))}
+                
               </tbody>
             </table>
           </div>
         );
       };
-    } 
+  
     
-export default RelatedVideos;
+export default Videos;

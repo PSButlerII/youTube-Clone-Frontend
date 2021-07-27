@@ -17,22 +17,20 @@ class SearchVideo extends Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
-    console.log(this.state.search_input);
   };
 
   onSubmitHandler = (event) => {
     event.preventDefault();
     const video = {
       video_id: this.state.video_id,
-    };
-    console.log("SubmitHandler: ",this.state.video_id);
+    };   
     this.props.videoResults(this.state.search_input);
     this.setState(
       {
         search_input: this.state.search_input,
         video_id: this.state.video_id,
       },
-      console.log(this)
+      console.log(this.state.videos)
     );
   };
 
