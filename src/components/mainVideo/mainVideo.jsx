@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './mainVideo.css'
 
 class MainVideo extends Component {
     constructor(props) {

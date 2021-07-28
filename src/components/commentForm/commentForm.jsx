@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './commentForm.css';
 
 class CommentForm extends Component {
   constructor(props) {
@@ -43,10 +44,9 @@ class CommentForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="center">
+        <div className="center-text">
           <form className="form-inline" onSubmit={this.handleSubmit}>
-            <h2>Add Comment</h2>
-
+            <h3>Comment on this video</h3>
             <input
               type="text"
               name="new_comment"
@@ -54,7 +54,7 @@ class CommentForm extends Component {
               onChange={this.handleChange}
               value={this.state.new_comment}
             />
-            <button type="submit"> Submit </button>
+            <button type="submit">Submit Comment</button>
           </form>
         </div>
 

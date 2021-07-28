@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './searchVideo.css'
 
 
 class SearchVideo extends Component {
@@ -37,6 +38,8 @@ class SearchVideo extends Component {
   render() {
     return (
       <React.Fragment>
+      <div className="row">
+      <h3>Search for a YouTube Video</h3>
         <form onSubmit={this.onSubmitHandler}>
           <input
             type="text"
@@ -47,6 +50,7 @@ class SearchVideo extends Component {
           />
           <button type="submit">Search</button>
         </form>
+        </div>
       </React.Fragment>
     );
   }

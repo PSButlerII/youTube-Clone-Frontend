@@ -4,6 +4,8 @@ import axios from "axios";
 import MainVideo from "./components/mainVideo/mainVideo";
 import CommentForm from "./components/commentForm/commentForm";
 import CommentTable from "./components/commentTable/commentTable";
+import "bootstrap/dist/css/bootstrap.min.css";
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -285,22 +287,29 @@ class App extends Component {
     this.getAllComments();
   };
 
-  filterCommentByVideoId(comments) {
-    const video_id = this.state.videos.data.items[0].id.videoId
-    const filteredComments = this.state.comments.filter(function(video_id) {
-      return filteredComments;
-    });
+  addReply = (id, comment) => {
+    axios.post(`http://127.0.0.1:8000/comment/`, id, comment);
+    this.getAllComments();
+  };
+
+  filterCommentByVideoId (comments){
+  const video_id = this.state.videos.data.items[0].id.videoId;
+  const filteredComments = this.state.comments.filter(function(comment) {
+      return comments.video_id == video_id;
+  });  
     console.log(filteredComments);
-  }
+    }
+
+
 
   render() {
     return (
       <React.Fragment>
-        <SearchVideo videoResults={this.youTubeVideo} />
-        <h1>MAIN VIDEO</h1>
+        <SearchVideo videoResults={this.youTubeVideo} /><hr /><br></br>
+        <h1>MAIN VIDEO</h1><br></br>
         <h2>{this.state.selectedVideoTitle}</h2>
         <MainVideo youTubeVideo={this.state.selectedVideoId} />
-        <p>{this.state.selectedVideoDescription}</p> <hr />
+        <h6>{this.state.selectedVideoDescription}</h6> <hr />
         <br></br>
         <CommentForm
           video_id={this.state.selectedVideoId}

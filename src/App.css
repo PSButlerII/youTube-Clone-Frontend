@@ -1,24 +1,23 @@
 body {
- background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/63f40bc6-739c-49fc-8246-570fa810c9d6/da10ku5-ffcbeb51-a4b3-445a-883d-14b9bfa4f517.png/v1/fill/w_1024,h_568,q_80,strp/youtube_play_button_background__3000_x_1700__by_dannegoma_da10ku5-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTY4IiwicGF0aCI6IlwvZlwvNjNmNDBiYzYtNzM5Yy00OWZjLTgyNDYtNTcwZmE4MTBjOWQ2XC9kYTEwa3U1LWZmY2JlYjUxLWE0YjMtNDQ1YS04ODNkLTE0YjliZmE0ZjUxNy5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.QR1vGr60GIQGxJ_e7oWDpf1FDAM0lLMVKHWj1VyUy1M');
- background-color: #cccccc;
- text-decoration:blue;
+  background-color: ghostwhite;
+  text-decoration: blue;
   text-decoration-color: red;
-  background-size:contain;  
+  background-size: contain;
 }
 
 .col-align {
-    text-align: center;
+  text-align: center;
 }
 
 .center {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .row-spacer {
-    margin-bottom: 2em;
+  margin-bottom: 2em;
 }
