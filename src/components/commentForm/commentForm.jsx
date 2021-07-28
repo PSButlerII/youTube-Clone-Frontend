@@ -44,10 +44,11 @@ class CommentForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="center-text">
+        <div id="comment_form" className="center-text">
           <form className="form-inline" onSubmit={this.handleSubmit}>
             <h3>Comment on this video</h3>
             <input
+              id="comment_form textarea"
               type="text"
               name="new_comment"
               placeholder="New Comment"

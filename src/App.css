@@ -1,15 +1,16 @@
 body {
+  background-image: url('https://w0.peakpx.com/wallpaper/471/8/HD-wallpaper-youtube-logo-winter-concepts-snow-texture-snow-background-youtube-emblem-winter-art-youtube.jpg');
   background-color: ghostwhite;
   text-decoration: blue;
   text-decoration-color: red;
-  background-size: contain;
+  background-size: 30%;
 }
 
 .col-align {
   text-align: center;
 }
 
-.center {
+/* .center {
   margin: 0;
   position: absolute;
   top: 50%;
@@ -20,4 +21,4 @@ body {
 
 .row-spacer {
   margin-bottom: 2em;
-}
+} */
